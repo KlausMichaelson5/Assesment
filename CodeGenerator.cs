@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,24 +14,28 @@ namespace Assement_Q1
 
         private static Dictionary<char, string> GenerateCode(string sentence)
         {
-            Dictionary<char, string> letterCodes = new Dictionary<char, string>();
+            Dictionary<char, string> letterCodestemp = new Dictionary<char, string>();
             string[] wordsList = sentence.Split(' ');
             for (int wordIndex = 0; wordIndex < wordsList.Length; wordIndex++)
             {
                 string word = wordsList[wordIndex];
                 for (int letterIndex = 0; letterIndex < word.Length; letterIndex++)
                 {
-                    if (!letterCodes.ContainsKey(word[letterIndex]))
+                    if (!letterCodestemp.ContainsKey(word[letterIndex]))
                     {
-                        string code = $"{wordIndex}{letterIndex}";
-                        letterCodes[word[letterIndex]] = code;
+                        string code=wordIndex.ToString();
+                        code+=letterIndex;
+                        letterCodestemp[char.ToLower(word[letterIndex])] = code;
                     }
                 }
             }
-            return letterCodes;
+            return letterCodestemp;
         }
 
-        public static Dictionary<char, string> GetLetterCodes() => letterCodes;
+        public static Dictionary<char, string> GetLetterCodes() 
+        { 
+            return letterCodes;
+        }
 
     }
 }
