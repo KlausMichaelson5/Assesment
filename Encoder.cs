@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +8,15 @@ namespace Assement_Q1
 {
     internal class Encoder
     {
+        private static Dictionary<char, string> letterCodes = CodeGenerater.GetLetterCodes();
+
         public static string Encode(string message)
         {
             if (message == null) throw new NullReferenceException("Please provide a string to encode.");
 
             if (message == "") throw new ArgumentException("Please provide a non empty string to encode.");
 
-            Dictionary<char, string> letterCodes = CodeGenerater.GetLetterCodes();
+           
 
             string result = "";
             for (int messageIndex = 0; messageIndex < message.Length; messageIndex++)
